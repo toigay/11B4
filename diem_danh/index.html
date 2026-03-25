@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điểm Danh Lớp 11B4</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { margin: 0; background-color: #f4f6f9; }
+        
+        /* Thanh Menu Pink */
+        .navbar { background-color: #fca3e1; padding: 15px; text-align: center; }
+        .navbar a { color: white; text-decoration: none; font-weight: bold; margin: 0 15px; font-size: 14px; text-transform: uppercase; }
+        
+        /* Khung nội dung chính */
+        .container { max-width: 800px; margin: 40px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; }
+        h2 { color: #333; font-size: 24px; margin-bottom: 20px; }
+        
+        /* Ô nhập liệu */
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 10px; color: #555; }
+        input[type="text"] { width: 100%; max-width: 400px; padding: 15px; background-color: #000; color: #fff; border: none; border-radius: 5px; font-size: 16px; outline: none; }
+        
+        /* Nút bấm */
+        .btn-group { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
+        button { padding: 12px 25px; border: none; border-radius: 5px; color: white; font-weight: bold; cursor: pointer; font-size: 14px; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn-present { background-color: #2ecc71; }
+        .btn-present:hover { background-color: #27ae60; }
+        .btn-absent { background-color: #e74c3c; }
+        .btn-absent:hover { background-color: #c0392b; }
+        
+        /* Khu vực thống kê */
+        hr { border: 0; border-top: 1px dashed #ccc; margin-bottom: 30px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .stat-card { background-color: #fff0f5; border: 1px solid #fca3e1; padding: 20px; border-radius: 8px; color: #d63384; font-weight: bold; }
+        
+        footer { text-align: center; margin-top: 20px; color: #666; font-size: 14px; padding-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../index.html">Home</a>
+        <a href="#">Điểm Danh</a>
+        <a href="#">Thời Khoá Biểu</a>
+        <a href="#">Giáo Viên</a>
+        <a href="#">Đề Cương</a>
+    </nav>
+
+    <div class="container">
+        <h2>ĐIỂM DANH LỚP 11B4</h2>
+        
+        <div class="input-group">
+            <label>Nhập tên của bạn để điểm danh:</label>
+            <input type="text" id="ten-hoc-sinh" placeholder="Ví dụ: Nguyễn Văn A">
+        </div>
+
+        <div class="btn-group">
+            <button class="btn-present" onclick="guiDiemDanh('Có Mặt')">✔️ KHÔNG NGHỈ</button>
+            <button class="btn-absent" onclick="guiDiemDanh('Có Nghỉ')">❌ CÓ NGHỈ</button>
+        </div>
+
+        <hr>
+
+<div class="stats-grid">
+            <div class="stat-card">
+                Vắng Hôm Nay<br>
+                <span id="vang-hom-nay" style="color: #333; font-size: 18px; display: block; margin-top: 10px;">Đang tải...</span>
+            </div>
+            <div class="stat-card">
+                Vắng Tuần Này<br>
+                <span id="vang-tuan-nay" style="color: #333; font-size: 18px; display: block; margin-top: 10px;">Đang tính...</span>
+            </div>
+            <div class="stat-card">
+                Vắng Tháng Này<br>
+                <span id="vang-thang-nay" style="color: #333; font-size: 18px; display: block; margin-top: 10px;">Đang tính...</span>
+            </div>
+        </div>    </div>
+
+    <footer>&copy; 2026 Made with 💖 by Hà Nhật Phi in 11B4</footer>
+
+    <script type="module">
+        // Import các công cụ của Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+        // ⚠️ GIÁM ĐỐC DÁN CỤC firebaseConfig TỪ BƯỚC 1 VÀO ĐÂY NHÉ:
+        const firebaseConfig = {
+            apiKey: "AIzaSyBbKimBMfmQCcjop8iYtEc9pZxZXJ99eFA",
+            authDomain: "kiniemlopb4.firebaseapp.com",
+            projectId: "kiniemlopb4",
+            storageBucket: "kiniemlopb4.firebasestorage.app",
+            messagingSenderId: "21167831387",
+            appId: "1:21167831387:web:2a7954e039340875ef827e"
+        };
+
+        // Khởi động Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        // HÀM TẢI VÀ TÍNH TOÁN THỐNG KÊ
+        window.taiThongKe = async function() {
+            try {
+                // Chỉ lôi những đứa "Có Nghỉ" ra để đếm cho nhẹ máy
+                const q = query(collection(db, "BangDiemDanh"), where("tinhTrang", "==", "Có Nghỉ"));
+                const snapshot = await getDocs(q);
+
+                let homNay = [];
+                let tuanNay = 0;
+                let thangNay = 0;
+
+                // Lấy mốc thời gian hiện tại
+                const now = new Date();
+                const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+                
+                // Tính xem Thứ 2 của tuần này là ngày mấy
+                const day = now.getDay();
+                const diff = now.getDate() - day + (day === 0 ? -6 : 1);
+                const startOfWeek = new Date(now.getFullYear(), now.getMonth(), diff).getTime();
+                
+                // Tính ngày mùng 1 của tháng này
+                const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).getTime();
+
+                snapshot.forEach((doc) => {
+                    const data = doc.data();
+                    // Firebase lưu thời gian, mình lôi ra tính toán
+                    const time = data.localTime || (data.timestamp ? data.timestamp.toMillis() : 0);
+                    
+                    if(time >= startOfDay) homNay.push(data.tenHocSinh);
+                    if(time >= startOfWeek) tuanNay++;
+                    if(time >= startOfMonth) thangNay++;
+                });
+
+                // In kết quả ra màn hình
+                document.getElementById('vang-hom-nay').innerText = homNay.length > 0 ? homNay.join(", ") : "0";
+                document.getElementById('vang-tuan-nay').innerText = tuanNay + " lượt";
+                document.getElementById('vang-thang-nay').innerText = thangNay + " lượt";
+            } catch (error) {
+                console.error("Lỗi tải thống kê: ", error);
+            }
+        };
+
+        // Kích hoạt hàm này ngay khi vừa mở web
+        taiThongKe();
+
+        // Viết hàm gửi dữ liệu (Gắn vào window để gọi được từ thẻ button HTML)
+        window.guiDiemDanh = async function(trangThai) {
+            const tenInput = document.getElementById('ten-hoc-sinh');
+            const ten = tenInput.value.trim();
+
+            if (ten === "") {
+                alert("Ê khoan! Cậu chưa nhập tên kìa!");
+                tenInput.focus();
+                return;
+            }
+
+            try {
+                // Đẩy dữ liệu lên kho 'BangDiemDanh'
+// Đẩy dữ liệu lên kho 'BangDiemDanh'
+                await addDoc(collection(db, "BangDiemDanh"), {
+                    tenHocSinh: ten,
+                    tinhTrang: trangThai,
+                    thoiGian: new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' }),
+                    localTime: new Date().getTime(), // Thêm cái này để tính toán siêu tốc
+                    timestamp: serverTimestamp() 
+                });
+
+                alert(`✅ Điểm danh thành công!\nTrạng thái: ${ten} - ${trangThai}`);
+                tenInput.value = ""; 
+                
+                // Cập nhật lại 3 bảng thống kê ngay lập tức
+                taiThongKe();
+                alert(`✅ Điểm danh thành công!\nTrạng thái: ${ten} - ${trangThai}`);
+                tenInput.value = ""; // Xóa trắng ô nhập sau khi gửi
+                
+                // Nếu báo vắng, cập nhật tạm lên màn hình
+                if(trangThai === "Có Nghỉ") {
+                    document.getElementById('vang-hom-nay').innerText += ten + ", ";
+                }
+
+            } catch (error) {
+                console.error("Lỗi rồi sếp ơi: ", error);
+                alert("Mạng lắc hoặc chưa mở Test Mode trên Firebase! Check lại console (F12).");
+            }
+        };
+
+        // Xóa chữ "Đang tải..." khi load xong
+        document.getElementById('vang-hom-nay').innerText = "";
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Báo 11B4</title>
+    <link rel="icon" type="image/png" href="../snapedit_1774011297061.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="../index.html" class="back-btn">❮ Về Trang Chủ</a>
+        <h2>Thông Báo Của Lớp 🔔</h2>
+    </div>
+
+    <div class="notification-container" id="bangThongBao">
+        </div>
+        <footer style="text-align: center;">
+    <p>&copy; 2026 Made with 💖 by Hà Nhật Phi in 11B4 </p>
+</footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
+<script>
+        // 1. NHỚ DÁN LẠI MÃ FIREBASE CỦA BRO VÀO ĐÂY
+        const firebaseConfig = {          
+            apiKey: "AIzaSyBbKimBMfmQCcjop8iYtEc9pZxZXJ99eFA",
+            authDomain: "kiniemlopb4.firebaseapp.com",
+            databaseURL: "https://kiniemlopb4-default-rtdb.firebaseio.com",
+            projectId: "kiniemlopb4",
+            messagingSenderId: "21167831387",
+            appId: "1:21167831387:web:2a7954e039340875ef827e"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        // 2. LẮNG NGHE VÀ IN THÔNG BÁO (Đã thêm AI nhận diện nút bấm)
+        db.ref("thong_bao_b4").on("child_added", (snapshot) => {
+            const data = snapshot.val();
+            const container = document.getElementById('bangThongBao');
+            
+            let iconHtml = data.hinh_icon.includes("http") 
+                ? `<img src="${data.hinh_icon}" alt="Icon">` 
+                : `<span style="font-size: 40px;">${data.hinh_icon}</span>`;
+
+            // XỬ LÝ NÚT BẤM THÔNG MINH
+            // Nếu admin không nhập tên nút, mặc định nó sẽ hiện chữ "Đã Đọc"
+            let textHienThi = data.ten_nut ? data.ten_nut : "Đã Đọc";
+            let nutHtml = "";
+
+            // Nếu admin có dán link -> Biến nó thành cái nút màu hồng nổi bật chuyển trang
+            if (data.link_nut && data.link_nut !== "") {
+                nutHtml = `<a href="${data.link_nut}" class="action-btn">${textHienThi}</a>`;
+            } 
+            // Nếu không có link -> Biến nó thành cái nút viền xám mờ mờ
+            else {
+                nutHtml = `<button class="action-btn outline">${textHienThi}</button>`;
+            }
+
+            const div = document.createElement('div');
+            div.className = "noti-item unread"; 
+            div.innerHTML = `
+                <div class="noti-icon">
+                    ${iconHtml}
+                </div>
+                <div class="noti-content">
+                    <h3 class="noti-title">${data.tieu_de}</h3>
+                    <p class="noti-desc">${data.noi_dung}</p>
+                    <span class="noti-time">${data.thoi_gian}</span>
+                </div>
+                <div class="noti-action">
+                    ${nutHtml} </div>
+            `;
+
+            container.prepend(div); 
+        });
+    </script>
+</body>
+</html>

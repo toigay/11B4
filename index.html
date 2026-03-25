@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kỷ Niệm Lớp B4</title>
+    <link rel="icon" type="image/png" href="snapedit_1774011297061.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Thanh điều hướng -->
+   <nav class="navbar">
+    <ul>
+        <ul class="navbar">
+    <li>
+        <a href="index.html" class="home-link">
+            <img src="snapedit_1774011297061.png" alt="Logo B4" class="nav-logo"> 
+            Hub
+            11B4
+        </a>
+    </li>
+</ul> 
+        <li><a href="diem_danh/index.html">Điểm Danh Hằng Ngày</a></li>
+        <li><a href="thoi_khoa_bieu/index.html">Thời Khoá Biểu</a></li>
+        <li><a href="giao_vien/index.html">Giáo Viên</a></li>
+        <li><a href="de_cuong/index.html">Đề Cương</a></li>
+        <li><a href="tin_nhan/index.html">Tin Nhắn Chung</a></li>
+        <li><a href="thong_bao/index.html">Thông Báo</a></li>
+        <li><a href="tro_ly_ai/index.html">Trợ Lý AI 🤖</a></li>
+    </ul>
+</nav>
+
+</div>
+
+    </ul>
+</nav>
+
+    <button id="chat-toggle-btn" class="chat-btn">
+    🤖
+</button>
+<!-- Chat Bot -->
+<div class="chat-box" id="chat-box" style="display: none; position: fixed; bottom: 20px; right: 20px; width: 350px; height: 400px; background: #fff; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <div class="chat-header">
+        <span>Trợ Lý Lớp 11B4</span>
+        <button id="close-chat">✖</button>
+    </div>
+    <div class="chat-content" id="chat-content">
+        <div class="message bot-message">Chào cậu! Tớ là AI của lớp. Cậu đang hoạc bài hay đang buồn chuyện gì kể tớ nghe?</div>
+    </div>
+    <div class="chat-input-area">
+        <input type="text" id="user-input" placeholder="Nhập tin nhắn...">
+        <button id="send-btn">Gửi</button>
+    </div>
+</div>
+
+    <header class="hero">
+        <div class="overlay"></div> 
+        <div class="hero-content">
+            <h1>B4(2024 - 2027)</h1>
+            <h2>"Thanh xuân giống như một cơn mưa rào..."</h2>
+        </div>
+    </header>
+
+    <section class="b4-2024-2027">
+        <div class="container">
+<style>
+    /* Phần CSS cho Timeline - Bro có thể chèn cục này vào file style.css nếu muốn */
+    .journey-timeline-container {
+        width: 100%;
+        max-width: 1000px; /* Độ rộng tối đa để khung chữ giãn đều sang hai bên */
+        margin: 50px auto; /* Cách trên dưới 50px, căn giữa màn hình */
+        padding: 0 20px;   /* Cách lề hai bên khi xem trên điện thoại */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .journey-timeline-title {
+        text-align: center;
+        color: #d63384; /* Màu hồng đậm chủ đạo của web lớp */
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 50px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Khung chứa chính, set hàng ngang */
+    .timeline-flex-wrapper {
+        display: flex;
+        justify-content: space-between; /* Giãn cách đều 3 khối */
+        align-items: flex-start; /* Căn lề trên */
+        position: relative;
+    }
+
+    /* Đường kẻ ngang nối liền 3 giai đoạn */
+    .timeline-flex-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 25px; /* Nằm ngay chính giữa các vòng tròn điểm mốc */
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-color: #fca3e1; /* Màu hồng nhạt */
+        z-index: 1; /* Nằm dưới các vòng tròn */
+    }
+
+    /* Từng khối giai đoạn (Lớp 10, 11, 12) */
+    .timeline-item {
+        flex: 1; /* Mỗi khối chiếm 1 phần bằng nhau */
+        text-align: center;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2; /* Nằm trên đường kẻ ngang */
+    }
+
+    /* Vòng tròn điểm mốc chứa số năm học */
+    .timeline-dot {
+        width: 54px;
+        height: 54px;
+        background-color: white; /* Nền trắng */
+        border: 4px solid #fca3e1; /* Viền hồng nhạt */
+        border-radius: 50%; /* Ép thành hình tròn */
+        color: #d63384;
+        font-size: 22px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px; /* Căn giữa vòng tròn */
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+
+    /* Hiệu ứng khi di chuột vào khối (để biết mình đang học lớp nào) */
+    .timeline-item.active .timeline-dot,
+    .timeline-item:hover .timeline-dot {
+        background-color: #d63384; /* Đổi màu nền hồng đậm */
+        border-color: #d63384;
+        color: white;
+        transform: scale(1.1); /* Phóng to nhẹ */
+    }
+
+    /* Phần tiêu đề giai đoạn (Lớp 10, Lớp 11...) */
+    .timeline-grade-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    /* Phần mô tả ý nghĩa chi tiết */
+    .timeline-grade-desc {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.6;
+        text-align: justify; /* Căn đều chữ sang hai bên cho đẹp */
+    }
+</style>
+
+<div class="journey-timeline-container">
+    <div class="journey-timeline-title">HÀNH TRÌNH CẤP BA CỦA CHÚNG TA</div>
+    
+    <div class="timeline-flex-wrapper">
+
+        <div class="timeline-item">
+            <div class="timeline-dot">10</div>
+            <div class="timeline-grade-title">Khởi Đầu Mới</div>
+            <div class="timeline-grade-desc">Bước chân bỡ ngỡ vào cổng trường cấp ba. Gặp gỡ những "mảnh ghép" đầu tiên của B4, cùng nhau tạo nên những trò đùa tinh nghịch đầu tiên dưới mái trường này. Một năm học trong sáng và đầy kỉ niệm đẹp.</div>
+        </div>
+
+        <div class="timeline-item active">
+            <div class="timeline-dot">11</div>
+            <div class="timeline-grade-title">Bản Lề & Bứt Phá</div>
+            <div class="timeline-grade-desc">Năm học "bản lề" bận rộn. Cân bằng giữa học và chơi. Cùng nhau giải đề Toán khó, cày Văn, luyện tiếng Anh. Vượt qua áp lực thi cử nhờ có tập thể B4 kề vai sát cánh.</div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot">12</div>
+            <div class="timeline-grade-title">Về Đích & Chia tay</div>
+            <div class="timeline-grade-desc">Đếm ngược từng ngày. Tập trung cao độ cho kỳ thi Tốt Nghiệp. Tung cánh bay xa đến những chân trời mới nhưng mãi khắc ghi kỉ niệm B4 thân thương. Tạm biệt nhưng không bao giờ quên.</div>
+        </div>
+
+    </div>
+</div>        </div>
+    </section>
+
+   <section class="memory-section">
+    <div class="slider-wrapper">
+        <button class="nav-btn prev-btn" onclick="scrollSlider(-1)">❮</button>
+
+        <div class="scroll-container" id="memorySlider">
+            <div class="memory-card"><img src="football.jpg" alt="Kỷ niệm 2"><div class="memory-desc">Đội bóng đá lớp</div></div>
+            <div class="memory-card"><img src="10.jpg" alt="Kỷ niệm 3"><div class="memory-desc">20/10</div></div>
+            <div class="memory-card"><img src="11.jpg" alt="Kỷ niệm 4"><div class="memory-desc">19/11</div></div>
+            <div class="memory-card"><img src="11_(2).jpg" alt="Kỷ niệm 5"><div class="memory-desc">20/11</div></div>
+            <div class="memory-card"><img src="lixi_cho_lop.jpg" alt="Kỷ niệm 3"><div class="memory-desc">Cả Lớp được lì xì!!</div></div>
+        </div>
+
+        <button class="nav-btn next-btn" onclick="scrollSlider(1)">❯</button>
+    </div>
+</section>
+<style>
+    /* CSS trang trí cho Góc Dí Dỏm V2.0 - BẢN TRƯỢT NGANG HIỆN ĐẠI */
+    .funny-corner-container {
+        max-width: 1100px;
+        margin: 60px auto;
+        padding: 0 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .funny-title {
+        font-size: 32px;
+        text-align: center;
+        color: #00bcd4; 
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+        letter-spacing: 1.5px;
+        text-shadow: 2px 2px 0px #e0f7fa;
+    }
+
+    /* --- BÍ KÍP TRƯỢT NGANG --- */
+    .funny-grid {
+        display: flex; /* Dàn hàng ngang */
+        overflow-x: auto; /* Bật tính năng cuộn ngang */
+        gap: 30px; /* Khoảng cách giữa các thẻ */
+        padding-bottom: 25px; /* Chừa khoảng trống dưới đáy cho thanh cuộn */
+        padding-top: 15px; /* Chừa lề trên để thẻ lúc hover nảy lên không bị cắt viền */
+        scroll-behavior: smooth; /* Cuộn mượt mà */
+        -webkit-overflow-scrolling: touch; /* Vuốt mượt trên điện thoại */
+    }
+
+    /* --- TRANG TRÍ THANH CUỘN (SCROLLBAR) MÀU CYAN --- */
+    .funny-grid::-webkit-scrollbar {
+        height: 12px; /* Độ dày của thanh cuộn */
+    }
+    .funny-grid::-webkit-scrollbar-track {
+        background: #e0f7fa; /* Nền thanh cuộn màu xanh siêu nhạt */
+        border-radius: 10px; /* Bo góc tròn */
+    }
+    .funny-grid::-webkit-scrollbar-thumb {
+        background: #00bcd4; /* Cục nắm kéo màu xanh Cyan đậm */
+        border-radius: 10px; /* Bo góc tròn */
+    }
+    .funny-grid::-webkit-scrollbar-thumb:hover {
+        background: #008ba3; /* Rê chuột vào thì đậm hơn tí */
+    }
+
+    /* --- THẺ BÀI TO KHỔNG LỒ --- */
+    .funny-card {
+        flex: 0 0 320px; /* Ép cứng chiều rộng thẻ là 320px, cấm bóp méo! */
+        background: #fff;
+        border: 2px dashed #00bcd4;
+        border-radius: 15px;
+        padding: 0; 
+        box-shadow: 5px 5px 0px rgba(0, 188, 212, 0.2);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        overflow: hidden; 
+        display: flex;
+        flex-direction: column; 
+    }
+
+    .funny-card:hover {
+        transform: translateY(-10px) rotate(-2deg);
+        box-shadow: 10px 10px 0px rgba(0, 188, 212, 0.4);
+        background: #f0fdff;
+    }
+
+    /* --- ẢNH TO HƠN --- */
+    .funny-image {
+        width: 100%;
+        height: 220px; /* Tăng chiều cao ảnh lên cho đã mắt */
+        object-fit: cover; 
+        border-bottom: 2px dashed #00bcd4; 
+    }
+
+    /* --- PHẦN CHỮ NHÌN THOÁNG HƠN --- */
+    .funny-content-box {
+        padding: 25px 20px; 
+        flex-grow: 1; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; 
+    }
+
+    .funny-text {
+        font-size: 16px; /* Chữ to ra một xíu */
+        color: #333;
+        font-weight: bold;
+        line-height: 1.6;
+        text-align: justify; 
+        margin-bottom: 20px;
+    }
+
+    .funny-author {
+        display: block;
+        font-size: 14px;
+        color: #888;
+        font-style: italic;
+        text-align: right; 
+    }
+</style>
+<div class="funny-corner-container">
+    <div class="funny-title">📸 Góc Dí Dỏm B4 - Meme Edition 📸</div>
+    
+    <div class="funny-grid">
+        
+        <div class="funny-card">
+            <img src="1.0.jpg" alt="Meme học bài" class="funny-image">
+            <div class="funny-content-box">
+                <div class="funny-text">Ở đây có check in với idol 11b4.!!!!<br>B4 đẳng cấp nhất khối 😂</div>
+                <span class="funny-author">- B4 Memer -</span>
+            </div>
+        </div>
+
+        <div class="funny-card">
+            <img src="1.1.jpg" alt="Angry student" class="funny-image">
+            <div class="funny-content-box">
+                <div class="funny-text">Nhìn cổng trại 11b4 đủ hoành tráng chưa 🎉<br>Tất cả là nhờ các bạn nam B4 đấy 🫰</div>
+                <span class="funny-author">- B4 Memer -</span>
+            </div>
+        </div>
+
+        <div class="funny-card">
+            <img src="1.2.jpg" alt="Running meme" class="funny-image">
+            <div class="funny-content-box">
+                <div class="funny-text">Ơ nhìn kìa !<br>Trai tài Gái sắc của B4 ĐẤY! 😂</div>
+                <span class="funny-author">- B4 Memer -</span>
+            </div>
+        </div>
+
+        <div class="funny-card">
+            <img src="1.3.jpg" alt="PUBG status" class="funny-image">
+            <div class="funny-content-box">
+                <div class="funny-text">Có ai thấy B4 đẹp trai không? 😍</div>
+                <span class="funny-author">- B4 Memer -</span>
+            </div>
+        </div>
+        
+        <div class="funny-card">
+            <img src="1.4.jpg" alt="PUBG status" class="funny-image">
+            <div class="funny-content-box">
+                <div class="funny-text">Bẩm Hoàng Thượng, thấy được sự toả sáng của B4 như vì tinh tú vậy ạ🌟</div>
+                <span class="funny-author">- B4 Memer -</span>
+            </div>
+        </div>
+
+
+    </div>
+</div>    <!-- Danh sách thành viên -->
+<section id="members" class="members-section">
+    <div class="container">
+        <h2>Thành Viên Lớp 11B4</h2>
+                                                                                                                                                                                                                                                                                                                                                               
+        <div class="search-box">
+    <input type="text" id="searchInput" placeholder=" Nhập tên bạn muốn tìm...">
+</div>
+
+        <div class="table-scroll-wrapper">
+            <table class="class-table" id="classTable">
+                <thead>
+                    <tr>
+                        <th>Họ Tên</th>
+                        <th>STT</th>
+                        <th>Chức Vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Lê Đức Anh</strong></td>
+                        <td>1</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        
+                        <td><strong>Nguyễn Thị Quỳnh Chi</strong></td>
+                        <td>2</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>  
+                    <tr>
+                        <td><strong>Nguyễn Trần Linh Chi</strong></td>
+                        <td>3</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lê Quang Dũng</strong></td>
+                        <td>4</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Trần Đăng Đức</strong></td>
+                        <td>5</td>
+                        <td><span class="role">Tổ Trưởng Tổ 4</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Trần Ngọc Anh Đức</strong></td>
+                        <td>6</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Hồ Thị Hà Giang</strong></td>
+                        <td>7</td>
+                        <td><span class="role">Tổ Trưởng Tổ 1</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Trần Nguyên Hãn</strong></td>
+                        <td>8</td>
+                        <td><span class="role">Lớp Phó Lao Động</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Huỳnh Thị Ngọc Hiền</strong></td>
+                        <td>9</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Cái Xuân Hoàng</strong></td>
+                        <td>10</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Nguyễn Tiến Hoàng</strong></td>
+                        <td>11</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Trần Đức Gia Huy</strong></td>
+                        <td>12</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Trương Gia Kiệt</strong></td>
+                        <td>13</td>
+                        <td><span class="role">Lớp phó học tập/Tổ trưởng tổ 3</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Hoàng Minh Lạc</strong></td>
+                        <td>14</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Hoàng Đình Bảo Linh</strong></td>
+                        <td>15</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Nguyễn Thị Khánh Linh</strong></td>
+                        <td>16</td>
+                        <td><span class="role">Lớp Phó Văn Thể Mỹ</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Phan Lê Phương Linh</strong></td>
+                        <td>17</td>
+                        <td><span class="role">Tổ Trưởng Tổ 2</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Hoàng Đình Bảo Long</strong></td>
+                        <td>18</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Lê Chí Long</strong></td>
+                        <td>19</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Nguyễn Bảo Long</strong></td>
+                        <td>20</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Lý Thị Hà My</strong></td>
+                        <td>21</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Nguyễn Văn Nhật Nam</strong></td>
+                        <td>22</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr> 
+                     <tr>
+                        <td><strong>Phạm Thị Hồng Ngọc</strong></td>
+                        <td>23</td>
+                        <td><span class="role">Cờ Đỏ</span></td>
+                    </tr> 
+                    <tr>
+                        <td><strong>Lê Hoàng Yến Nhi</strong></td>
+                        <td>24</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lê Phương Bảo Nhi</strong></td>
+                        <td>25</td>
+                        <td><span class="role">Bí Thư</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trần Thị Vân Oanh</strong></td>
+                        <td>26</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hà Nhật Phi</strong></td>
+                        <td>27</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trần Minh Phước</strong></td>
+                        <td>28</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hoàng Văn Phương</strong></td>
+                        <td>29</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mai Thị Uyên Phương</strong></td>
+                        <td>30</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nguyễn Mậu Hoàng Quân</strong></td>
+                        <td>31</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nguyễn Hoàng Anh Quý</strong></td>
+                        <td>32</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trần Ngọc Thành</strong></td>
+                        <td>33</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nguyễn Minh Thảo</strong></td>
+                        <td>34</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bùi Quang Thắng</strong></td>
+                        <td>35</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phạm Hoàng Đức Thắng</strong></td>
+                        <td>36</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nguyễn Thị Minh Thư</strong></td>
+                        <td>37</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phan Hoàng Anh Thư</strong></td>
+                        <td>38</td>
+                        <td><span class="role">Phụ Trách Sổ Đầu Bài</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hoàng Trần Anh Tiến</strong></td>
+                        <td>39</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trần Thị Tường Vi</strong></td>
+                        <td>40</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phạm Hà Tuấn Vũ</strong></td>
+                        <td>41</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phạm Thị Tường Vy</strong></td>
+                        <td>42</td>
+                        <td><span class="role">Thành viên</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nguyễn Hoàng Yến</strong></td>
+                        <td>43</td>
+                        <td><span class="role">Lớp Trưởng</span></td>
+                    </tr>
+                    </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- sơ đồ chỗ ngồi lớp 11B4 -->
+    <section id="class-map" class="map-section">
+    <div class="container">
+        <h2>Sơ Đồ Chỗ Ngồi Lớp 11B4</h2>
+        
+        <div class="blackboard-container">
+            <div class="blackboard">BẢNG ĐEN</div>
+        </div>
+
+        <div class="map-grid">
+            <div class="aisle">
+                <div class="teacher-area">
+                    <div class="teacher-desk">Bàn Giáo Viên</div>
+                </div>
+
+                <div class="group-block">
+                    <div class="group-title">Tổ 3</div>
+                    <div class="desk-block"><span>Phi</span><span>My</span><span>Hiền</span><span>HDBLong</span></div>
+                    <div class="desk-block"><span>U Phương</span><span>HDBLinh</span><span>X Hoàng</span><span>Hãn</span></div>
+                    <div class="desk-block"><span>Vi</span><span>Oanh</span><span>Q Thắng</span><span>Kiệt</span></div>
+                </div>
+
+                <div class="group-block">
+                    <div class="group-title">Tổ 4</div>
+                    <div class="desk-block"><span>A Thư</span><span>Q Chi</span><span>Lạc</span><span>Nam</span></div>
+                    <div class="desk-block"><span></span><span>Y Nhi</span><span>A Đức</span><span>Ngọc</span></div>
+                    <div class="desk-block"><span></span><span>T Hoàng</span><span>Đ Đức</span><span>Thành</span></div>
+                </div>
+            </div>
+
+            <div class="aisle">
+                <div class="spacer"></div> <div class="group-block">
+                    <div class="group-title">Tổ 1</div>
+                    <div class="desk-block"><span>Quân</span><span>M Thư</span><span>NBLong</span><span>Dũng</span></div>
+                    <div class="desk-block"><span>B Nhi</span><span>Đ Anh</span><span>Thảo</span><span>V Phương</span></div>
+                    <div class="desk-block"><span>L Chi</span><span>Giang</span><span>Phước</span><span>T Vy</span></div>
+                </div>
+
+                <div class="group-block">
+                    <div class="group-title">Tổ 2</div>
+                    <div class="desk-block"><span>Yến</span><span>Tiến</span><span>K Linh</span><span>Đ Thắng</span></div>
+                    <div class="desk-block"><span>Huy</span><span>Vũ</span><span>P Linh</span><span>Quý</span></div>
+                    <div class="desk-block"><span>Chí Long</span><span></span><span></span><span></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <p style="margin-top:20px; color: #888;"></p>
+    
+    <section class="wishes">
+        <div class="container">
+            <h1>Gửi Tương Lai</h1>
+            <p>Chúc tất cả chúng ta đều thành đạt. Hẹn gặp lại ở đỉnh vinh quang sự nghiệp !!!!!</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Made with ❤️ by  Hà Nhật Phi in 11B4 </p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="bot.js"></script>
+<script>
+        // Đợi web tải xong, khóa mục tiêu là thanh điều hướng và lôi nó lên
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                // Tìm cái thanh điều hướng (thẻ nav)
+                const thanhMenu = document.querySelector('nav');
+                if (thanhMenu) {
+                    // Ép màn hình cuộn khít vào mép trên của thanh Menu
+                    thanhMenu.scrollIntoView({ behavior: 'instant', block: 'start' });
+                } else {
+                    window.scrollTo(0, 0);
+                }
+            }, 100); 
+        });
+    </script>
+</body>
+</html>

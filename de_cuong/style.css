@@ -1,0 +1,135 @@
+body {
+    background-color: #fdf2f8; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.back-btn {
+    align-self: flex-start;
+    text-decoration: none;
+    background-color: #f5a9f2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+}
+
+h2 {
+    color: #f06292;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #888;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+/* GIAO DIỆN LƯỚI CHO MÁY TÍNH */
+.document-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 10px;
+}
+
+/* THIẾT KẾ Ô TÀI LIỆU */
+.doc-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+    border: 2px solid #f8bbd0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s;
+}
+
+.doc-card:hover {
+    transform: translateY(-5px);
+    border-color: #f06292;
+}
+
+/* Tạo một cái khung cố định cho bức ảnh */
+.icon {
+    width: 80px;  /* Chiều rộng khung ảnh (bro có thể chỉnh to nhỏ tùy ý) */
+    height: 80px; /* Chiều cao khung ảnh */
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ép bức ảnh phải lấp đầy khung mà không bị méo */
+.icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cực kỳ quan trọng để ảnh không bị biến dạng */
+    border-radius: 12px; /* Bo góc ảnh cho mềm mại, xịn xò */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Thêm viền bóng mờ mờ cho nổi bật */
+}
+
+.doc-card h3 {
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.doc-card p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Đẩy nút tải xuống dưới cùng */
+}
+
+/* Nút tải tài liệu */
+.download-btn {
+    text-decoration: none;
+    background: #f06292;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    width: 80%;
+    transition: 0.3s;
+}
+
+.download-btn:hover {
+    background: #d81b60;
+}
+
+/* Làm nổi bật góc IELTS */
+.ielts-card {
+    background: #fff0f5;
+    border: 3px solid #f06292;
+}
+
+/* =========================================
+   GIAO DIỆN ĐIỆN THOẠI (Chống tràn viền)
+========================================= */
+@media screen and (max-width: 768px) {
+    .document-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .doc-card {
+        width: 90%;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+}

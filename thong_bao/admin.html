@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Thông Báo 11B4</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #333; color: white; display: flex; flex-direction: column; align-items: center; }
+        .admin-box { background: white; padding: 20px; border-radius: 10px; width: 100%; max-width: 500px; color: black; }
+        input, textarea { width: 100%; margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #f06292; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        .optional { font-size: 12px; color: #666; font-weight: normal; }
+    </style>
+</head>
+<body>
+
+    <div class="admin-box">
+        <h2>BỘ CHỈ HUY: ĐĂNG THÔNG BÁO 🚀</h2>
+        
+        <label>Tiêu đề thông báo:</label>
+        <input type="text" id="tieuDe" placeholder="VD: Lịch thi giữa kì...">
+
+        <label>Nội dung chi tiết:</label>
+        <textarea id="noiDung" rows="4" placeholder="Nhập nội dung vào đây..."></textarea>
+
+        <label>Icon (Emoji hoặc link ảnh):</label>
+        <input type="text" id="iconThongBao" placeholder="VD: 📢" value="📢">
+
+        <label>Chữ trên nút <span class="optional">(Bỏ trống sẽ hiện chữ "Đã Đọc")</span>:</label>
+        <input type="text" id="tenNut" placeholder="VD: Xem Đề Cương">
+
+        <label>Đường link của nút <span class="optional">(Bỏ trống sẽ thành nút mờ)</span>:</label>
+        <input type="text" id="linkNut" placeholder="VD: ../de_cuong/index.html">
+
+        <button onclick="dangThongBao()">🚀 PHÓNG THÔNG BÁO LÊN WEB</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
+    <script>
+        // 1. NHỚ DÁN LẠI MÃ FIREBASE CỦA BRO VÀO ĐÂY NHÉ
+        const firebaseConfig = {
+            apiKey: "AIzaSyBbKimBMfmQCcjop8iYtEc9pZxZXJ99eFA",
+            authDomain: "kiniemlopb4.firebaseapp.com",
+            databaseURL: "https://kiniemlopb4-default-rtdb.firebaseio.com",
+            projectId: "kiniemlopb4",
+            messagingSenderId: "21167831387",
+            appId: "1:21167831387:web:2a7954e039340875ef827e"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        function dangThongBao() {
+            const title = document.getElementById('tieuDe').value.trim();
+            const desc = document.getElementById('noiDung').value.trim();
+            const icon = document.getElementById('iconThongBao').value.trim();
+            const btnText = document.getElementById('tenNut').value.trim();
+            const btnLink = document.getElementById('linkNut').value.trim();
+
+            if (title === "" || desc === "") {
+                alert("Chưa nhập Tiêu đề hoặc Nội dung kìa bro!");
+                return;
+            }
+
+            const timeNow = new Date().toLocaleString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' });
+
+            // Bắn thêm thông tin nút lên Firebase
+            db.ref("thong_bao_b4").push({
+                tieu_de: title,
+                noi_dung: desc,
+                hinh_icon: icon,
+                thoi_gian: timeNow,
+                ten_nut: btnText,
+                link_nut: btnLink
+            }).then(() => {
+                alert("Đăng thành công!");
+                // Xóa chữ sau khi đăng
+                document.getElementById('tieuDe').value = ""; 
+                document.getElementById('noiDung').value = "";
+                document.getElementById('tenNut').value = "";
+                document.getElementById('linkNut').value = "";
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+body {
+    background-color: #fdf2f8; /* Nền hồng siêu nhạt */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Nút quay lại */
+.back-btn {
+    align-self: flex-start;
+    text-decoration: none;
+    background-color: #f5a9f2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #f06292;
+}
+
+/* Khung chứa bảng */
+.tkb-container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 1000px;
+}
+
+h2 {
+    text-align: center;
+    color: #f06292;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+h3 {
+    text-align: center;
+    color: #f06292;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Bảng TKB */
+.tkb-table {
+    width: 100%;
+    border-collapse: collapse; /* Gộp đường viền cho đẹp */
+    text-align: center;
+}
+
+.tkb-table th, .tkb-table td {
+    border: 1px solid #f8bbd0;
+    padding: 15px;
+}
+
+/* Dòng tiêu đề (Thứ) */
+.tkb-table th {
+    background-color: #f5a9f2;
+    color: white;
+    font-size: 16px;
+}
+
+/* Cột Tiết học */
+.tiet-col {
+    background-color: #fdf2f8;
+    font-weight: bold;
+    color: #f06292;
+}
+
+/* Hiệu ứng di chuột vào từng dòng */
+.tkb-table tbody tr:hover {
+    background-color: #fff0f5;
+}

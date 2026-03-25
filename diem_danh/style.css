@@ -1,0 +1,98 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+}
+
+.navbar {
+    background-color: #f5a9f2; 
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.navbar a:hover { background-color: #d48ccf; }
+.navbar a.active { background-color: #d48ccf; } /* Đánh dấu trang đang xem */
+
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h2 { text-align: center; color: #333; }
+
+.input-section {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-bottom: 2px dashed #ccc;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px;
+    color: white;
+}
+
+.btn-di-hoc { background-color: #28a745; }
+.btn-nghi { background-color: #dc3545; }
+
+.list-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.column {
+    flex: 1;
+    background: #fff0f5;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #f5a9f2;
+}
+
+.column h3 {
+    text-align: center;
+    color: #d63384;
+    border-bottom: 2px solid #f5a9f2;
+    padding-bottom: 10px;
+}
+
+ul { list-style-type: none; padding: 0; }
+li {
+    background: white;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+}
+.time-stamp { font-size: 0.8em; color: gray; }

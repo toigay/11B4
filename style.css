@@ -1,0 +1,1004 @@
+/* Reset cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+/* Header & Hero Section */
+.hero {
+    height: 100vh;
+    background-image: url('10.jpg'); /* Ảnh nền lớn */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    animation: slideUp 1s ease-out;
+}
+
+.hero h1 {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.btn-scroll {
+    display: inline-block;
+    padding: 10px 25px;
+    background: #ff7675;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn-scroll:hover {
+    background: #d63031;
+}
+
+/* Sections */
+section {
+    padding: 60px 20px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+/* Gallery Grid */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* Hiệu ứng ảnh Polaroid */
+.photo-card {
+    background: white;
+    padding: 10px 10px 50px 10px; /* Chừa chỗ dưới cho caption */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease;
+    position: relative;
+    opacity: 0; /* Ẩn để JS xử lý hiện ra */
+    transform: translateY(20px);
+}
+
+.photo-card:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.photo-card:hover {
+    transform: scale(1.05) rotate(0deg);
+    z-index: 10;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.img-box img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.caption {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.2rem;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    color: #636e72;
+}
+
+/* Class hiệu ứng hiện lên */
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0) rotate(-2deg); /* Giữ lại góc xoay khi hiện */
+    transition: all 0.6s ease-out;
+}
+.photo-card:nth-child(even).visible {
+    transform: translateY(0) rotate(2deg);
+}
+
+/* Footer */
+footer {
+    background: #2d3436;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Animation Keyframes */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+}
+.members-section {
+    background: #fff;
+    padding: 60px 20px;
+}
+
+.class-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.class-table th, .class-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ffffff;
+}
+
+/* Chỉnh các ô tiêu đề (Họ Tên, Biệt Danh...) */
+.class-table th {
+    background-color: #00BFFF; /* Màu tím hồng bạn đang dùng */
+    color: white;
+    padding: 20px 30px;        /* 20px là chiều cao, 30px là chiều rộng */
+    text-align: left;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.4rem;
+    
+    /* ĐỂ CHỈNH RIÊNG ĐỘ RỘNG CHO CỘT HỌ TÊN */
+    min-width: 200px;          /* Tăng số này nếu muốn cột Họ Tên dài ra */
+    white-space: nowrap;       /* Giúp chữ "Họ Tên" không bao giờ bị nhảy dòng */
+}
+
+/* Nếu bạn muốn các ô dữ liệu ở dưới cũng rộng tương ứng */
+.class-table td {
+    padding: 15px 30px;        /* Giữ số 30px giống ở trên để thẳng hàng */
+    vertical-align: middle;
+}
+.class-table tr:hover {
+    background-color: #ffffff;
+}.members-section {
+    padding: 60px 20px;
+    background-color: #ffffff;
+}
+
+.table-responsive {
+    overflow-x: auto; /* Giúp xem được trên điện thoại */
+}
+
+.class-table {
+    width: 100%;
+    border-collapse: separate; /* Để dùng được border-radius */
+    border-spacing: 0;
+    margin-top: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Phần tiêu đề giống ảnh bạn gửi */
+.class-table th {
+    background-color: #00BFFF; /* Màu tím nhạt */
+    color: white;
+    padding: 20px;
+    text-align: left;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.4rem;
+}
+
+.class-table td {
+    padding: 15px 20px;
+    background-color: white;
+    border-bottom: 1px solid #ffffff;
+    font-size: 1rem;
+}
+
+.class-table tr:last-child td {
+    border-bottom: none;
+}
+
+.role {
+    background: #fff0f0;    /* Màu nền hồng nhạt */
+    color: #ff7675;        /* Màu chữ hồng */
+    padding: 4px 12px;     /* Căn chỉnh khoảng cách bên trong cho cân đối */
+    border-radius: 12px;   /* Bo góc nhẹ nhàng */
+    font-weight: bold;
+    font-size: 0.85rem;
+    
+    /* HAI DÒNG QUAN TRỌNG NHẤT ĐỂ HẾT CÁCH DÒNG */
+    display: inline-flex;  /* Giúp highlight ôm sát chữ */
+    white-space: nowrap;   /* Tuyệt đối không cho chữ nhảy xuống dòng */
+}
+
+/* Căn giữa chữ trong ô bảng để nhìn đỡ khó chịu */
+.class-table td {
+    vertical-align: middle; /* Căn chữ nằm giữa ô theo chiều dọc */
+    text-align: center;     /* Căn chữ nằm giữa ô theo chiều ngang (tùy chọn) */
+}
+/* Style cho thanh tìm kiếm */
+.search-box {
+    margin-bottom: 20px;
+    text-align: right; /* Đẩy thanh tìm kiếm sang phải cho gọn */
+}
+
+.search-box input {
+    padding: 10px 15px;
+    width: 300px; /* Độ rộng thanh tìm kiếm */
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+    transition: 0.3s;
+}
+
+.search-box input:focus {
+    border-color: #ff7675;
+    box-shadow: 0 0 8px rgba(255, 118, 117, 0.3);
+}
+
+/* Style cho khung cuộn (QUAN TRỌNG) */
+.table-scroll-wrapper {
+    max-height: 400px; /* Chiều cao tối đa, quá 400px sẽ hiện thanh cuộn */
+    overflow-y: auto;  /* Hiện thanh cuộn dọc */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+/* Giữ tiêu đề bảng đứng im khi cuộn (Sticky Header) */
+.class-table th {
+    position: sticky;
+    top: 0;
+    z-index: 2; /* Đảm bảo tiêu đề luôn nổi lên trên nội dung */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Bóng nhẹ để phân cách */
+}
+/* Nút tròn mở chat */
+.chat-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #6c5ce7; /* Màu tím đậm hơn chút để nổi */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: transform 0.3s;
+}
+
+.chat-btn:hover {
+    transform: scale(1.1) rotate(10deg);
+}
+
+/* Khung hộp chat */
+.chat-box {
+    position: fixed;
+    bottom: 30px;
+    right: 80px; /* Hiện ra bên trái nút bấm */
+    width: 300px;
+    height: 400px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    display: none; /* Mặc định ẩn */
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1001;
+    border: 1px solid #eee;
+}
+
+/* Header chat */
+.chat-header {
+    background: #a29bfe;
+    color: white;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+#close-chat {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Nội dung tin nhắn */
+.chat-content {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background: #fdfdfd;
+    font-size: 0.9rem;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 80%;
+    line-height: 1.4;
+}
+
+.bot-message {
+    background: #eee;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+.user-message {
+    background: #6c5ce7;
+    color: white;
+    margin-left: auto; /* Đẩy tin nhắn sang phải */
+    border-bottom-right-radius: 2px;
+}
+
+/* Khu vực nhập liệu */
+.chat-input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #eee;
+}
+
+#user-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+}
+
+#send-btn {
+    background: #6c5ce7;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    margin-left: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+/* --- Style Sơ Đồ Lớp --- */
+.map-section {
+    background-color: #fdfdfd; /* Màu nền trắng nhẹ */
+    padding-bottom: 80px;
+    border-top: 5px dashed #ffeaa7; /* Đường kẻ ngăn cách vui mắt */
+}
+
+/* Khu vực Bảng và Bàn GV */
+.front-class {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.blackboard {
+    width: 60%;
+    background-color: #2d3436; /* Màu bảng đen */
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 4px solid #000000;
+    margin-bottom: 20px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.teacher-desk {
+    width: 30%;
+    background-color: #565c3d55; /* Màu bàn gỗ */
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 4px 0 #212020; /* Hiệu ứng 3D */
+}
+
+/* Khu vực chia Tổ */
+.map-container {
+    display: flex;
+    justify-content: space-around; /* Chia đều khoảng cách 4 tổ */
+    flex-wrap: wrap; /* Tự xuống dòng nếu màn hình nhỏ */
+    gap: 20px;
+}
+
+.group-column {
+    background: #f1f2f6;
+    padding: 15px;
+    border-radius: 15px;
+    min-width: 200px; /* Độ rộng tối thiểu của mỗi tổ */
+}
+
+.group-title {
+    text-align: center;
+    font-weight: bold;
+    color: #6c5ce7;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Cặp bàn ghế */
+.desk-pair {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px; /* Khoảng cách giữa các bàn trên/dưới */
+    gap: 10px;
+}
+
+/* Cái ghế (đại diện cho học sinh) */
+.seat {
+    background-color: white;
+    border: 2px solid #a29bfe;
+    color: #333;
+    padding: 10px 5px;
+    width: 90px; /* Độ rộng chỗ ngồi */
+    text-align: center;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.map-grid {
+    display: flex;
+    justify-content: center;
+    gap: 80px; /* Tạo lối đi rộng ở giữa hai dãy */
+    margin-top: 30px;
+}
+
+.aisle {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Khoảng cách giữa tổ trên và tổ dưới */
+}
+
+.group-block {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+.group-title {
+    font-weight: bold;
+    color: #a29bfe;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 2px solid #fca3e1;
+}
+
+.desk-pair {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.seat {
+    width: 80px;
+    height: 40px;
+    background: white;
+    border: 2px solid #fca3e1;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.seat:hover {
+    background: #fca3e1;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Container bảng đen */
+.blackboard-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.blackboard {
+    width: 50%;
+    background: #2d3436;
+    color: white;
+    padding: 10px;
+    border: 4px solid #636e72;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Bàn giáo viên nằm bên trái */
+.teacher-area {
+    display: flex;
+    justify-content: flex-start; /* Đẩy sang trái của dãy */
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+.teacher-desk {
+    width: 120px;
+    height: 50px;
+    background: #45340d;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 4px 0 #1e120398;
+}
+
+/* Khoảng trống bên phải để cân bằng */
+.spacer {
+    height: 70px; /* Bằng chiều cao bàn GV + margin */
+}
+
+/* Tạo khối bàn 2 người */
+.desk-block {
+    display: flex;
+    width: 360px; /* Tăng độ rộng để chứa 4 span */
+    height: 45px;
+    background: white;
+    border: 2px solid #00BFFF;
+    border-radius: 10px;
+    margin: 0 auto 12px; /* Căn giữa trong tổ và tạo khoảng cách giữa các bàn */
+    overflow: hidden;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.desk-block span {
+    flex: 1; /* Chia đều đưa các span */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    white-space: nowrap; /* Không cách xuống dòng */
+    overflow: hidden; /* Ẩn text tràn */
+    text-overflow: ellipsis; /* Dùng ... nếu text quá dài */
+    padding: 0 5px; /* Thêm khoảng cách từ các cạnh */
+}
+
+/* Kẻ một vạch mờ giữa các bàn */
+.desk-block span:not(:last-child) {
+    border-right: 1px dashed #ffeaa7;
+}
+
+.desk-block:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(226, 162, 245, 0.4);
+    background: #fcf5ff;
+}
+
+/* Layout tổng thể */
+.map-grid {
+    display: flex;
+    justify-content: center;
+    gap: 100px; /* Lối đi giữa hai dãy */
+}
+
+.aisle {
+    display: flex;
+    flex-direction: column;
+}
+
+.group-block {
+    margin-bottom: 30px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+/* Thiết lập chung cho thanh menu */
+.navbar {
+    
+    background-color: #1E90FF; /* Màu xanh giống trong ảnh ví dụ */
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Định dạng danh sách các nút */
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Để các nút nằm ngang hàng */
+    align-items: center;
+}
+
+/* Định dạng từng mục menu */
+.navbar li {
+    border-right: 1px solid rgba(255, 255, 255, 0.562); /* Đường kẻ mờ giữa các nút */
+}
+
+/* Định dạng chữ trong nút */
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* Hiệu ứng khi di chuột vào nút */
+.navbar li a:hover {
+    background-color: #B0C4DE; /* Màu xanh đậm hơn khi di chuột */
+}
+
+/* Icon ngôi nhà */
+.home-icon {
+    font-style: normal;
+}
+/* Cấu hình chung cho thanh điều hướng */
+.navbar {
+    display: flex; /* Sử dụng Flexbox để dễ căn chỉnh */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #1E90FF; /* Màu hồng menu của bạn */
+    align-items: center;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* Bước 1: Đảm bảo thanh menu là một hàng ngang linh hoạt */
+.navbar {
+    display: flex !important; 
+    align-items: center !important;
+    list-style: none !important;
+}
+
+/* Bước 3: Trang trí lại cho 2 nút này sát nhau và đẹp hơn */
+.navbar li:nth-child(9) a, 
+.navbar li:nth-child(10) a {
+    background-color: rgba(255, 255, 255, 0.4) !important;
+    border-radius: 10px !important;
+    margin: 5px !important;
+    padding: 8px 15px !important;
+}
+/* Căn chỉnh cho logo nằm thẳng hàng với chữ Home */
+.home-link {
+    display: flex !important;
+    align-items: center;
+    gap: 10px; /* Khoảng cách giữa ảnh và chữ Home */
+}
+
+.nav-logo {
+    height: 35px; /* Chiều cao vừa vặn với thanh menu */
+    width: 35px;  /* Chiều rộng bằng chiều cao để ảnh vuông hoặc tròn */
+    border-radius: 50%; /* Làm cho logo hình tròn (nếu bạn thích) */
+    object-fit: cover;
+    border: 2px solid white; /* Thêm viền trắng cho nổi bật trên nền hồng */
+}
+
+/* Kiểu dáng cho từng ô kỷ niệm giống trong hình */
+.card {
+    width: 300px;
+    height: 200px;
+    margin: 0 20px;
+    background: #fdf2f8;
+    border-radius: 20px;
+    border: 1px solid #616161;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    font-weight: bold;
+    color: #f06292;
+    flex-shrink: 0;
+}
+
+/* Khung bao quanh cả slider và nút */
+.slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+}
+
+/* Thùng chứa ảnh: Cho phép cuộn ngang nhưng ẩn thanh cuộn */
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth; /* Giúp hiệu ứng trượt mượt mà */
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none; /* Ẩn thanh cuộn cho đẹp */
+}
+
+/* Fix lỗi ảnh to: Khống chế kích thước ô chứa cực chặt */
+.memory-card {
+    min-width: 320px; /* Bắt buộc rộng đúng 320px */
+    width: 320px;
+    height: 220px;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 3px solid #87CEEB;
+    flex-shrink: 0; /* Không cho ô bị bóp méo */
+}
+
+.memory-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ảnh lấp đầy ô, không bị tràn, không bị méo */
+}
+
+/* Style cho 2 cái nút bấm */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(171, 171, 171, 0.8);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.prev-btn { left: 0; }
+.next-btn { right: 0; }
+
+.nav-btn:hover { background: #ff0000; }
+/* Khung chứa ảnh và chữ */
+.memory-card {
+    min-width: 320px;
+    width: 320px;
+    /* Tăng chiều cao tổng để dành chỗ cho chữ ở dưới */
+    height: 300px; 
+    display: flex;
+    flex-direction: column; /* Xếp ảnh ở trên, chữ ở dưới */
+    background: #fff;
+    border-radius: 15px;
+    border: 3px solid #87CEEB;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Khu vực chứa ảnh (chiếm 220px) */
+.card-image {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Khu vực chứa Caption (nằm dưới ảnh) */
+.memory-caption {
+    margin: 0;
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: bold;
+    color: #f06292;
+    background: #ffffff; /* Hoặc màu hồng nhạt tùy bạn */
+    font-size: 15px;
+    flex-grow: 1; /* Tự động lấp đầy phần còn lại ở dưới */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.memory-desc {
+    text-align: center;      /* ĐÂY LÀ DÒNG QUAN TRỌNG NHẤT ĐỂ CÂN GIỮA CHỮ */
+    font-weight: bold;       /* Chữ đậm cho nó "cực ngầu" */
+    color: #505050;          /* Màu hồng đậm */
+    background: #ffffff;     /* Cái nền màu hồng nhạt của ô chữ */
+    padding: 10px;           /* Khoảng cách từ chữ đến viền ô */
+    width: 100%;             /* Ô chữ rộng bằng ô ảnh */
+    box-sizing: border-box;  /* Giữ padding không làm ô bị to ra */
+    margin: 0;               /* Bỏ margin thừa */
+}
+/* =========================================
+   GIAO DIỆN ĐIỆN THOẠI (Dưới 768px)
+========================================= */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Chống lỗi tràn viền ngang (rất quan trọng) */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* 2. Thu gọn thanh Menu (Navbar) */
+    .navbar {
+        flex-direction: column !important; /* Đổi từ nằm ngang sang nằm dọc */
+        padding: 10px 0 !important;
+    }
+
+    .navbar li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Thêm đường kẻ phân cách */
+    }
+
+    /* Kéo 2 nút Đăng Nhập/Đăng Ký về lại giữa thay vì sát mép phải */
+    .navbar li:nth-child(9),
+    .navbar li:nth-child(10),
+    .nav-right {
+        margin-left: 0 !important;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* 3. Chỉnh lại kích thước các Ô Kỷ Niệm & Giáo Viên */
+    .memory-card, .teacher-card {
+        min-width: 90%; /* Bắt buộc thu nhỏ lại cho vừa màn hình điện thoại */
+        width: 90%;
+        margin: 10px auto; /* Tự động căn giữa */
+    }
+
+    /* 4. Chỉnh lại thanh cuộn kỷ niệm */
+    .slider-wrapper {
+        padding: 0 10px; /* Bỏ bớt khoảng trống 2 bên cho rộng rãi */
+    }
+}
+/* =========================================
+   SỬA LỖI TRÀN VIỀN TRÊN ĐIỆN THOẠI
+========================================= */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Khóa chặt chiều ngang, cấm mọi phần tử thò ra ngoài */
+    html, body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    /* 2. Ép các hình ảnh không bao giờ to hơn màn hình */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* 3. Xử lý "thủ phạm" Sơ đồ chỗ ngồi (Bảng của các Tổ) */
+    /* Nếu các bảng đang nằm ngang nhau, bắt chúng xếp dọc xuống */
+    .so-do-container, .grid-to { /* Thay tên class này bằng đúng class bọc mấy cái bảng Tổ 1, Tổ 2 của bro nhé */
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    /* Bắt cái bảng phải thu nhỏ lại cho vừa điện thoại */
+    table, .bang-cho-ngoi { 
+        width: 100% !important;
+        display: block;
+        overflow-x: auto; /* Nếu tên bạn nào dài quá, bảng sẽ cho phép vuốt ngang thay vì phá vỡ màn hình */
+    }
+
+    /* 4. Căn giữa cái Footer của Hà Nhật Phi cho đẹp */
+    footer, .footer-class { /* Thay bằng class footer của bro */
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
+/* --- THANH MENU TỔNG --- */
+/* Ẩn thanh cuộn (scrollbar) cho đẹp */
+.navbar::-webkit-scrollbar {
+    display: none; 
+}
+
+/* --- TỪNG NÚT BẤM TRONG MENU --- */
+
+/* Bỏ đường kẻ ở ô cuối cùng */
+.navbar a:last-child {
+    border-right: none;
+}
+/* --- THANH MENU BẤT TỬ --- */
+.navbar { 
+    background-color: #1E90FF; 
+    width: 100%;
+    
+    /* Sa thải Flexbox, dùng Block kết hợp chống rớt dòng */
+    display: block !important; 
+    white-space: nowrap !important; 
+    overflow-x: auto !important; 
+    -webkit-overflow-scrolling: touch; 
+    
+    /* Chỉnh lề và chiều cao */
+    padding: 0;
+    text-align: left !important; /* Ép chết lề trái, không bao giờ bị cắt chữ Home nữa */
+}
+
+/* Ẩn thanh cuộn (Nếu bro muốn hiện để dùng chuột kéo thì xóa đoạn này đi) */
+.navbar::-webkit-scrollbar {
+    display: none; 
+}
+
+/* --- CÁC NÚT BẤM DÀN HÀNG NGANG --- */
+.navbar a { 
+    color: white; 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-size: 14px; 
+    text-transform: uppercase;
+    
+    /* Bí kíp dàn hàng ngang không cần Flexbox */
+    display: inline-block !important; 
+    vertical-align: middle;
+    
+    padding: 20px 20px; /* Độ rộng của nút, số 20 đầu là chiều cao, số 20 sau là chiều ngang */
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.navbar a:last-child {
+    border-right: none;
+}
+/* --- CODE CHỈ ĐỔI PHÔNG CHỮ, KHÔNG ĐỤNG KHUNG VIỀN --- */
+.navbar a {
+    /* 1. Đổi kiểu chữ (Bro có thể thay 'Arial' bằng 'Roboto', 'Tahoma' hoặc font tùy thích) */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    
+    /* 2. Chỉnh độ to của chữ (Chỉnh số 16px to nhỏ tùy ý) */
+    font-size: 20px !important; 
+    
+    /* 3. [Bí kíp] Giãn cách các chữ cái ra một chút giúp chữ nhìn to, thoáng và sang hơn rất nhiều */
+    letter-spacing: 0.5px !important; 
+    
+    font-weight: 700 !important; /* In đậm chữ */
+}
