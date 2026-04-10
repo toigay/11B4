@@ -1,4 +1,4 @@
-const API_KEY = "AIzaSyC-6oU0_tZ_kc2tX3UZAc3AnQcuXkPlnNc"; 
+const API_KEY = "AIzaSyAU2p3yKEN7pC7pCMsW8XdB7pNKYvmcTEQ"; 
 
 document.getElementById('send-btn').addEventListener('click', askGeminiPro);
 document.getElementById('user-input').addEventListener('keypress', function (e) {
