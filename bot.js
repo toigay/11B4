@@ -1,5 +1,5 @@
 // 1. DÁN MÃ BÍ MẬT CỦA BRO VÀO ĐÂY (Lấy ở trang Google AI Studio)
-const API_KEY = "AIzaSyC-6oU0_tZ_kc2tX3UZAc3AnQcuXkPlnNc"; 
+const API_KEY = "AIzaSyAU2p3yKEN7pC7pCMsW8XdB7pNKYvmcTEQ"; 
 
 // 2. Bắt sự kiện khi bấm nút Gửi
 document.getElementById('send-btn').addEventListener('click', askGemini);
